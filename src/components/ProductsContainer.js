@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ProductItem from './ProductItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../features/cart/cartSlice';
@@ -6,13 +6,20 @@ import { addToCart } from '../features/cart/cartSlice';
 function ProductsContainer() {
   const { items } = useSelector((store) => store.products);
   const { cartItems } = useSelector((store) => store.cart);
-  // console.log(items);
-  console.log(cartItems);
   const dispatch = useDispatch();
+
+  function componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+  useEffect(() => {
+    componentDidMount();
+  }, []);
+
   return (
-    <>
-      <h1 className='text-center my-5'>Shop</h1>
-      {/* <div className='container'> */}
+    <section>
+      <header>
+        <h1>Shop</h1>
+      </header>
       <div className='cont text-center'>
         {items?.map((item) => {
           const { id, title, price, image } = item;
@@ -40,7 +47,7 @@ function ProductsContainer() {
         })}
       </div>
       {/* </div> */}
-    </>
+    </section>
   );
 }
 

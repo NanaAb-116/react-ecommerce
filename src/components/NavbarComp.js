@@ -4,8 +4,7 @@ import { FaShoppingBag } from 'react-icons/fa';
 import { useSelector } from 'react-redux/';
 
 function NavbarComp() {
-  const { cartItems, amount } = useSelector((store) => store.cart);
-  console.log(amount);
+  const { amount } = useSelector((store) => store.cart);
   return (
     <nav className='navbar'>
       <Link to='/'>
