@@ -14,7 +14,7 @@ function CartItem({ id, image, title, price, amount }) {
       </div>
       <div className='amount-container'>
         <AiOutlinePlus onClick={() => dispatch(increase(id))} />
-        <h3>{amount}</h3>
+        <h3 className='mb-1'>{amount}</h3>
         <AiOutlineMinus
           onClick={() => {
             if (amount === 1) {
