@@ -8,11 +8,8 @@ import SharedLayout from './components/SharedLayout';
 import ProductsContainer from './components/ProductsContainer';
 import CartContainer from './components/cart/CartContainer';
 import Error from './components/Error';
-import Loading from './components/Loading';
-import SingleItem from './components/SingleItem';
 
 function App() {
-  const { isLoading } = useSelector((store) => store.products);
   const { cartItems } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
 
@@ -22,9 +19,7 @@ function App() {
   useEffect(() => {
     dispatch(calculateTotals());
   }, [cartItems]);
-  if (isLoading) {
-    return <Loading />;
-  }
+
   return (
     <div>
       <BrowserRouter>

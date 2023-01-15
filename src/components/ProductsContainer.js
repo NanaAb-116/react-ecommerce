@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import ProductItem from './ProductItem';
+import Loading from './Loading';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../features/cart/cartSlice';
 
 function ProductsContainer() {
-  const { items } = useSelector((store) => store.products);
-  const { cartItems } = useSelector((store) => store.cart);
+  const { items, isLoading } = useSelector((store) => store.products);
   const dispatch = useDispatch();
 
   function componentDidMount() {
@@ -15,6 +14,9 @@ function ProductsContainer() {
     componentDidMount();
   }, []);
 
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <section>
       <header>
